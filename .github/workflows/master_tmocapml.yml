@@ -43,7 +43,7 @@ jobs:
     needs: build
     environment:
       name: 'Production'
-      url: https://${{secrets.tmocapperml}}.azurewebsites.net
+      url: https://${{tmocapperml}}.azurewebsites.net
 
     steps:
       - name: Download artifact from build job
