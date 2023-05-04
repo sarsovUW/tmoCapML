@@ -44,7 +44,7 @@ jobs:
     needs: build
     environment:
       name: 'Production'
-      url: https://${{ secrets.TMOCAPPERML }}.azurewebsites.net
+      url: https://${{ TMOCAPPERML }}.azurewebsites.net
 
     steps:
       - name: Download artifact from build job
