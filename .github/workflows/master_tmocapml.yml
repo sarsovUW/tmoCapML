@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'TMOCapML'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_06FE89B6DFF34285B051439984F86743 }}
+          publish-profile: ${{ TMOCAPPERML }}
