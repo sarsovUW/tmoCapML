@@ -24,7 +24,7 @@ jobs:
 
       - name: Create and start virtual environment
         run: python -m venv env       
-          source env/bin/activate
+          source .
           pip install flask
           export FLASK_APP=capML.py
         
