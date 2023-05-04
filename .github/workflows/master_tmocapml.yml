@@ -62,4 +62,3 @@ jobs:
           app-name: 'TMOCapML'
           slot-name: 'Production'
           publish-profile: ${{ secrets.TMOCAPML}}
-          startup-command: 'gunicorn --bind=0.0.0.0 --timeout 600 capML:app'
