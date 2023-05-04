@@ -4,7 +4,7 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 # Load the machine learning model from the pickle file
-with open('model.pkl', 'rb') as f:
+with open('model2.pkl', 'rb') as f:
     model = pickle.load(f)
 
 # Define the API endpoint
