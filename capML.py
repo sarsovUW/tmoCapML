@@ -1,4 +1,5 @@
 import pickle
+import numpy as np
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)
@@ -14,7 +15,7 @@ def predict():
     data = request.get_json(force=True)
 
     # Make a prediction using the model
-    prediction = model.predict(data)
+    prediction = model.predict(np.array(json.loads(data)).reshape(-1, 5))
 
     # Return the prediction as JSON
     return jsonify(prediction.tolist())
