@@ -28,12 +28,11 @@ jobs:
           source venv/bin/activate
       
       - name: Install dependencies
-        run: python -m venv env
-             source env/bin/activate
-             pip install flask
+        run: 
+          pip install flask
             # Start the Flask app
-             export FLASK_APP=app.py
-             flask run --host=0.0.0.0 --port=$PORT
+          export FLASK_APP=app.py
+          flask run --host=0.0.0.0 --port=$PORT
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       
