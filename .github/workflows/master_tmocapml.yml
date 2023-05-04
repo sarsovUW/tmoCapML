@@ -23,7 +23,8 @@ jobs:
           python-version: '3.7'
 
       - name: Create and start virtual environment
-        run: python -m venv env       
+        run: |
+          python -m venv env       
           source .
           pip install flask
           export FLASK_APP=capML.py
@@ -43,7 +44,7 @@ jobs:
     needs: build
     environment:
       name: 'Production'
-      url: https://${{tmocapperml}}.azurewebsites.net
+      url: https://${{ secrets.tmocapperml }}.azurewebsites.net
 
     steps:
       - name: Download artifact from build job
