@@ -14,9 +14,10 @@ with open('model2.pkl', 'rb') as f:
 def predict():
     # Get the input data from the request
     data = request.get_json(force=True)
-
+    
+    data_string = json.dumbs(data)
     # Make a prediction using the model
-    prediction = model.predict(np.array(json.loads(data)).reshape(-1, 5))
+    prediction = model.predict(np.array(json.loads(data_string)).reshape(-1, 5))
 
     # Return the prediction as JSON
     return jsonify(prediction.tolist())
