@@ -62,3 +62,5 @@ jobs:
           app-name: 'TMOCapML'
           slot-name: 'Production'
           publish-profile: ${{ secrets.TMOCAPML}}
+          run: |
+            echo "WEBSITES_STARTUP_COMMAND='gunicorn capML:app'" >> $GITHUB_ENV
