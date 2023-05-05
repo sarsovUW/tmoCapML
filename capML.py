@@ -15,7 +15,7 @@ def predict():
     # Get the input data from the request
     data = request.get_json(force=True)
     
-    data_string = json.dumbs(data)
+    data_string = json.dumps(data)
     # Make a prediction using the model
     prediction = model.predict(np.array(json.loads(data_string)).reshape(-1, 5))
 
