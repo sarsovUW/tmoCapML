@@ -5,6 +5,7 @@ import json
 import sklearn
 
 app = Flask(__name__)
+app.config['DEBUG'] = True
 
 # Load the machine learning model from the pickle file
 with open('model2.pkl', 'rb') as f:
