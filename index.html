@@ -93,7 +93,7 @@
                     document.getElementById('predictionResult').innerHTML = 'Prediction: ' + predictionResult;
                 }
             };
-            xhr.send(JSON.stringify(inputData));
+            xhr.send(JSON.stringify({ data: inputData })); // Pass the input data as an object
         }
     </script>
 </body>
