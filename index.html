@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Machine Learning Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #F5F5F5;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #333333;
+        }
+        
+        p {
+            color: #666666;
+            margin-bottom: 20px;
+        }
+        
+        .prediction-form {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+        
+        .prediction-form input[type=text] {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            margin-right: 10px;
+        }
+        
+        .prediction-form button {
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: #333333;
+            color: #FFFFFF;
+            cursor: pointer;
+        }
+        
+        h2 {
+            color: #333333;
+            margin-top: 40px;
+        }
+        
+        ol {
+            text-align: center;
+            margin-left: 40px;
+            margin-bottom: 20px;
+        }
+        
+        code {
+            background-color: #F5F5F5;
+            padding: 2px 4px;
+            font-family: Consolas, monospace;
+            font-size: 14px;
+            color: #333333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Machine Learning Prediction</h1>
+    <p>Enter the input data below to get a prediction:</p>
+    <div class="prediction-form">
+        <input type="text" id="inputData" placeholder="Input Data">
+        <button onclick="makePrediction()">Predict</button>
+    </div>
+    <p id="predictionResult"></p>
+
+    <h2>How to Use the Prediction Endpoint</h2>
+    <p></p>
+    <ol>
+        <li>Send a POST request to <code>/predict</code> endpoint.</li>
+        <li>The input data should be provided in JSON format.</li>
+        <li>The expected format of the input data is an array of 5 values.</li>
+        <li>EX: '[RSRP, SINR, RF-ARFCN, BANDWIDTH, SS-RSRQ]', or numerically, '[-95.17, 10.82, 126270.0, 15.0, -10.77]'</li>
+        <li>The predicted result will be returned as a JSON response.</li>
+    </ol>
+
+    <script>
+        function makePrediction() {
+            var inputData = document.getElementById('inputData').value;
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/predict', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    var predictionResult = JSON.parse(xhr.responseText);
+                    document.getElementById('predictionResult').innerHTML = 'Prediction: ' + predictionResult;
+                }
+            };
+            xhr.send(JSON.stringify(inputData));
+        }
+    </script>
+</body>
+</html>
