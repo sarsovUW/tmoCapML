@@ -85,7 +85,7 @@
         function makePrediction() {
             var inputData = document.getElementById('inputData').value;
             var xhr = new XMLHttpRequest();
-            xhr.open('POST', '/predict', true);
+            xhr.open('POST', '/predict2', true);
             xhr.setRequestHeader('Content-Type', 'application/json');
             xhr.onreadystatechange = function() {
                 if (xhr.readyState === 4 && xhr.status === 200) {
