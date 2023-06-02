@@ -24,6 +24,22 @@ def predict():
     # Return the prediction as JSON
     return jsonify(prediction.tolist())
 
+@app.route('/predict2', methods=['POST'])
+def predict2():
+    # Get the input data from the request
+    data = request.get_json(force=True)
+    
+    data_string = json.dumps(data)
+
+    data_string = data_string[data_string.index('['):data_string.index(']')+1]
+    # M
+    #ake a prediction using the model
+    prediction = model.predict(np.array(json.loads(data_string)).reshape(-1, 5))
+
+    # Return the prediction as JSON
+    return jsonify(prediction.tolist())
+
+
 @app.route('/')
 def home():
     return render_template('index.html')
